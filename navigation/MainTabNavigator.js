@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import MemoriesScreen from '../screens/MemoriesScreen'; 
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -18,8 +19,8 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? `ios-heart${focused ? '' : '-outline'}`
+          : 'md-heart'
       }
     />
   ),
@@ -34,7 +35,21 @@ LinksStack.navigationOptions = {
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+      name={Platform.OS === 'ios' ? `ios-rainy${focused ? '' : '-outline'}` : 'md-rainy'}
+    />
+  ),
+};
+
+const MemoriesStack = createStackNavigator({
+  Settings: MemoriesScreen,
+});
+
+MemoriesStack.navigationOptions = {
+  tabBarLabel: 'Memories',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-camera${focused ? '' : '-outline'}` : 'md-camera'}
     />
   ),
 };
@@ -53,8 +68,10 @@ SettingsStack.navigationOptions = {
   ),
 };
 
+
 export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
+  MemoriesStack,
   SettingsStack,
 });
