@@ -32,7 +32,7 @@ onPressButton() {
        
         <Button
             onPress={this.onPressButton}
-            title="Press Me"
+            title="Button"
             color="#841584"
           />
          
