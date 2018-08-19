@@ -12,6 +12,8 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+import {TestComponent} from './../components/AppComponents';
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -40,6 +42,9 @@ export default class HomeScreen extends React.Component {
             <Text style={styles.getStartedText}>
               Cameron Chien
             </Text>
+
+            <TestComponent />
+
           </View>
 
           
