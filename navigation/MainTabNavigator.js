@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import RainyScreen from '../screens/RainyScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import MemoriesScreen from '../screens/MemoriesScreen'; 
 
@@ -26,12 +26,12 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const RainyStack = createStackNavigator({
+  RainyDay: RainyScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+RainyStack.navigationOptions = {
+  tabBarLabel: 'Rainy Day',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -71,7 +71,7 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  RainyStack,
   MemoriesStack,
   SettingsStack,
 });
