@@ -23,34 +23,30 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <View style={styles.welcomeContainer}>
-            <Image
-              source={
-                __DEV__
-                  ? require('../assets/images/robot-dev.png')
-                  : require('../assets/images/robot-prod.png')
-              }
-              style={styles.welcomeImage}
-            />
-          </View>
+          
 
           <View style={styles.getStartedContainer}>
           
 
             <Text style={styles.getStartedText}>Rin</Text>
 
-            <Text style={styles.getStartedText}>
-              Cameron Chien
-            </Text>
+        
 
             <TestComponent />
+            
+            
+            
 
           </View>
 
+          <View style={styles.collageViewContainer}>
+           <Image style={styles.collageImage} source= {require('../assets/images/photoCollage.png')} />
+          </View>
+      
           
         </ScrollView>
+      <Image style={styles.collageImage} source= {require('../assets/images/photoCollage.png')} />
 
-      
       </View>
     );
   }
@@ -106,5 +102,15 @@ const styles = StyleSheet.create({
   navigationFilename: {
     marginTop: 5,
   },
+  collageViewContainer: {
+    backgroundColor: '#fff'
+  },
+  collageImage:
+  {
+    flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'contain'
+  }
   
 });
