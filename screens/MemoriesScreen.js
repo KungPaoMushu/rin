@@ -40,6 +40,8 @@ onPressButton() {
          
          <Image source= {imageSource} />
          <Text> {displayedText} </Text>
+
+         
           
       </ScrollView>
     );
