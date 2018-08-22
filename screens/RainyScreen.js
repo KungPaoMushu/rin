@@ -12,7 +12,7 @@ export default class LinksScreen extends React.Component {
       <ScrollView style={styles.container} contentContainerStyle = {styles.center}>
         {/* Go ahead and delete ExpoLinksView and replace it with your
            * content, we just wanted to provide you with some helpful links */}
-      <Image source= {require('../assets/images/sadUnicorn.jpg')} />
+      <Image source= {require('../assets/images/sadUnicornTransparent.png')} />
       <View style = {styles.cheerUpButtonContainer}>
         <Button style = {styles.cheerUpButton}
   onPress={() => {
