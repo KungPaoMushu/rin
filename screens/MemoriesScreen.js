@@ -25,7 +25,7 @@ onPressButton() {
 
   render() {
   	
-  	let imageSource = pictureDisplay ? cam : other; 
+  	let imageSource = pictureDisplay ? other : cam; 
   	let displayedText = pictureDisplay ? text1 : text2; 
     return (
       <ScrollView style={styles.container}>
@@ -53,6 +53,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',
+    backgroundColor: '#bc8abd',
   },
 });
