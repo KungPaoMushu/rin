@@ -2,13 +2,20 @@ import React from 'react';
 import { ScrollView, StyleSheet, Button, Alert, Image, View, Text } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
+
+let databaseText = "Text from Database";
+
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
     title: 'Rainy Day',
   };
 
+
+
   render() {
     return (
+      
+
       <ScrollView style={styles.container} contentContainerStyle = {styles.center}>
         {/* Go ahead and delete ExpoLinksView and replace it with your
            * content, we just wanted to provide you with some helpful links */}
@@ -26,7 +33,7 @@ export default class LinksScreen extends React.Component {
     <View style = {styles.cheerUpTextContainer}>
       
       <Text style = {styles.cheerUpText}>
-        Text goes here
+        {databaseText}
       </Text> 
     </View>
       </ScrollView>
@@ -52,7 +59,7 @@ const styles = StyleSheet.create({
 
   cheerUpTextContainer:
   {
-    backgroundColor: '#eeccff',
+    //backgroundColor: '#eeccff',
     margin: 15, 
     paddingTop: 15, 
     paddingBottom: 15, 
