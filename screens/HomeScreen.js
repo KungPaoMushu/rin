@@ -34,9 +34,7 @@ export default class HomeScreen extends React.Component {
 
             <TestComponent />
             
-            
-            
-
+          
           </View>
 
           <View style={styles.collageViewContainer}>

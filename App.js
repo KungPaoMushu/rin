@@ -7,8 +7,17 @@ import * as firebase from 'firebase';
 
 export default class App extends React.Component {
   state = {
+      fontLoaded: false,
     isLoadingComplete: false,
   };
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      'AmaticSC-Regular': require('./assets/fonts/AmaticSC-Regular.ttf'),
+    });
+
+    this.setState({ fontLoaded: true });
+  }
 
   constructor(props) {
     super(props); 
