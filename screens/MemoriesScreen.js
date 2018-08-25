@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, Button, Text, Image } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
 const counter = 0; 
-const cam = require('../assets/images/cam.png'); 
+const cam = require('../assets/images/sunMoonStars.png'); 
 const other = require('../assets/images/icon.png')
 
 
@@ -38,7 +38,7 @@ onPressButton() {
          
 
          
-         <Image source= {imageSource} />
+         <Image style={styles.quoteImage} source= {imageSource} />
          <Text> {displayedText} </Text>
 
          
@@ -54,5 +54,15 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#bc8abd',
+    paddingLeft: 15,
+    paddingRight: 15
+
+
   },
+  quoteImage: {
+    flex: 1,
+    width: null,
+    
+    resizeMode: 'contain'
+  }
 });
