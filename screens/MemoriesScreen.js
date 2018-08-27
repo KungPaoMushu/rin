@@ -29,18 +29,16 @@ onPressButton() {
   	let displayedText = pictureDisplay ? text1 : text2; 
     return (
       <ScrollView style={styles.container}>
-       
-        <Button
-            onPress={this.onPressButton}
-            title="Button"
-            color="#841584"
-          />
-         
-
          
          <Image style={styles.quoteImage} source= {imageSource} />
          <Text> {displayedText} </Text>
 
+
+         <Button
+            onPress={this.onPressButton}
+            title="Button"
+            color="#841584"
+          />
          
           
       </ScrollView>
@@ -52,7 +50,7 @@ onPressButton() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    paddingTop: 25,
     backgroundColor: '#bc8abd',
     paddingLeft: 15,
     paddingRight: 15
