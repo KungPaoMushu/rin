@@ -22,12 +22,12 @@ export default class LinksScreen extends React.Component {
       <Image source= {require('../assets/images/sadUnicornTransparent.png')} />
       <View style = {styles.cheerUpButtonContainer}>
         <Button style = {styles.cheerUpButton}
-  onPress={() => {
-        Alert.alert('You tapped the button!');
-      }}
-      title="Cheer Up"
-      color="#fff"
-    />
+          onPress={() => {
+                Alert.alert('You tapped the button!');
+              }}
+              title="Cheer Up"
+              color="#fff"
+        />
     </View>
 
     <View style = {styles.cheerUpTextContainer}>

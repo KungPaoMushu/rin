@@ -1,6 +1,8 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Button, Text, Image } from 'react-native';
+import { ScrollView, StyleSheet, Button, Text, Image, Alert } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
+
+
 
 const counter = 0; 
 const cam = require('../assets/images/sunMoonStars.png'); 
@@ -34,18 +36,24 @@ onPressButton() {
          <Text> {displayedText} </Text>
 
 
-         <Button
-            onPress={this.onPressButton}
-            title="Button"
-            color="#841584"
-          />
+         <Button style = {styles.cheerUpButton}
+          onPress={() => {
+                Alert.alert('You tapped the button!', 'Text');
+              }}
+              title="Cheer Up"
+              color="#fff"
+        />
          
           
       </ScrollView>
     );
   }
 }
-
+onPressButton = () => {
+    Alert.alert(
+    'Alert Title',
+    'My Alert Message')
+  };
 
 const styles = StyleSheet.create({
   container: {
