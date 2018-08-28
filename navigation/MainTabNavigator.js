@@ -5,7 +5,6 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import RainyScreen from '../screens/RainyScreen';
-import SettingsScreen from '../screens/SettingsScreen';
 import MemoriesScreen from '../screens/MemoriesScreen'; 
 
 const HomeStack = createStackNavigator({
@@ -54,24 +53,10 @@ MemoriesStack.navigationOptions = {
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
-});
-
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? `ios-options${focused ? '' : '-outline'}` : 'md-options'}
-    />
-  ),
-};
 
 
 export default createBottomTabNavigator({
   HomeStack,
   RainyStack,
   MemoriesStack,
-  SettingsStack,
 });
