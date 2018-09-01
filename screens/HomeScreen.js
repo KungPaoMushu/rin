@@ -22,30 +22,13 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
           
+        <Image style={styles.logoImage} source= {require('../assets/images/logo.png')} />
+        <Image style={styles.collageImage} source= {require('../assets/images/photoCollage.png')} />
 
-          <View style={styles.getStartedContainer}>
-          
-
-            <Text style={styles.getStartedText}>Rin</Text>
-
-        
-
-            <TestComponent />
-            
-          
-          </View>
-
-          <View style={styles.collageViewContainer}>
-           <Image style={styles.collageImage} source= {require('../assets/images/photoCollage.png')} />
-          </View>
-      
-          
-        </ScrollView>
-      <Image style={styles.collageImage} source= {require('../assets/images/photoCollage.png')} />
 
       </View>
+
     );
   }
 
@@ -61,45 +44,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#bc8abd',
   },
-  contentContainer: {
-    paddingTop: 30,
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20,
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10,
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
-  },
-  homeScreenFilename: {
-    marginVertical: 7,
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4,
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
-  navigationFilename: {
-    marginTop: 5,
-  },
   collageViewContainer: {
     backgroundColor: '#fff'
   },
@@ -108,7 +52,19 @@ const styles = StyleSheet.create({
     flex: 1,
     width: null,
     height: null,
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    marginBottom: 15
+  },
+  logoImageContainer: {
+    backgroundColor: '#fff'
+  },
+  logoImage:
+  {
+    flex: 1, 
+    width: null, 
+    height: null, 
+    resizeMode: 'contain',
+    margin: 15
   }
   
 });
