@@ -1,8 +1,10 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Button, Alert, Image, View, Text } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
+import HappyThoughtComponent from '../components/AppComponents/HappyThoughtComponent';
+import { db } from '../db.js';
 
-
+let thoughtsRef = db.ref('/thoughts');
 let databaseText = "Text from Database";
 
 export default class LinksScreen extends React.Component {
@@ -10,8 +12,17 @@ export default class LinksScreen extends React.Component {
     title: 'Rainy Day',
   };
 
+  state = {
+    thoughts: []
+  }
 
-
+  componentDidMount() {
+    thoughtsRef.on('value', (snapshot) => {
+      let data = snapshot.val(); 
+      let thoughts = Object.values(data);
+      this.setState({thoughts});
+    }); 
+  }
   render() {
     return (
       
@@ -36,6 +47,17 @@ export default class LinksScreen extends React.Component {
         {databaseText}
       </Text> 
     </View>
+    <View style={styles.thoughtContainer}>
+    {
+      this.state.thoughts.length > 0
+      ?
+      <HappyThoughtComponent thoughts={this.state.thoughts} />
+      : <Text> No thoughts </Text>
+
+    }
+
+    </View>
+
       </ScrollView>
     );
   }
@@ -70,5 +92,11 @@ const styles = StyleSheet.create({
   cheerUpText:
   {
     color: '#fff'
+  },
+  thoughtContainer:
+  {
+    backgroundColor: '#fff',
+    flex: 1
+
   }
 });

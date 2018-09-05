@@ -18,16 +18,16 @@ const styles = StyleSheet.create({
 export default class HappyThoughtComponent extends Component {
 
   static propTypes = {
-      thought: PropTypes.array.isRequired
+      thoughts: PropTypes.array.isRequired
   };
 
   render() {
     return (
       <View style={styles.itemsList}>
-        {this.props.thought.map((item, index) => {
+        {this.props.thoughts.map((thoughts, index) => {
             return (
                 <View key={index}>
-                    <Text style={styles.thoughttext}>{thought.name}</Text>
+                    <Text style={styles.thoughttext}>{thoughts.name}</Text>
                 </View>
             )
         })}
