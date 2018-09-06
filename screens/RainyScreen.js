@@ -3,9 +3,16 @@ import { ScrollView, StyleSheet, Button, Alert, Image, View, Text } from 'react-
 import { ExpoLinksView } from '@expo/samples';
 import HappyThoughtComponent from '../components/AppComponents/HappyThoughtComponent';
 import { db } from '../db.js';
+import ItemComponent from '../components/ItemComponent';
 
 let thoughtsRef = db.ref('/thoughts');
 let databaseText = "Text from Database";
+
+
+
+//items
+let itemsRef = db.ref('/items');
+
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
@@ -13,16 +20,16 @@ export default class LinksScreen extends React.Component {
   };
 
   state = {
-    thoughts: []
-  }
+        items: []
+    }
 
-  componentDidMount() {
-    thoughtsRef.on('value', (snapshot) => {
-      let data = snapshot.val(); 
-      let thoughts = Object.values(data);
-      this.setState({thoughts});
-    }); 
-  }
+    componentDidMount() {
+        itemsRef.on('value', (snapshot) => {
+            let data = snapshot.val();
+            let items = Object.values(data);
+            this.setState({items});
+         });
+    }
   render() {
     return (
       
@@ -47,16 +54,13 @@ export default class LinksScreen extends React.Component {
         {databaseText}
       </Text> 
     </View>
-    <View style={styles.thoughtContainer}>
-    {
-      this.state.thoughts.length > 0
-      ?
-      <HappyThoughtComponent thoughts={this.state.thoughts} />
-      : <Text> No thoughts </Text>
-
-    }
-
-    </View>
+    <View style={styles.container}>
+                {
+                    this.state.items.length > 0
+                    ? <ItemComponent items={this.state.items} />
+                    : <Text>No items</Text>
+                }
+            </View>
 
       </ScrollView>
     );
