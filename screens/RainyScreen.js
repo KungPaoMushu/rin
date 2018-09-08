@@ -51,15 +51,16 @@ export default class LinksScreen extends React.Component {
     <View style = {styles.cheerUpTextContainer}>
       
       <Text style = {styles.cheerUpText}>
-        {databaseText}
-      </Text> 
-    </View>
-    <View style={styles.container}>
-                {
+         {
                     this.state.items.length > 0
                     ? <ItemComponent items={this.state.items} />
                     : <Text>No items</Text>
                 }
+        {databaseText}
+      </Text> 
+    </View>
+    <View style={styles.container}>
+               
             </View>
 
       </ScrollView>

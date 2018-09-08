@@ -42,6 +42,8 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: null,
+    height: null,
     backgroundColor: '#bc8abd',
   },
   collageViewContainer: {
@@ -52,8 +54,8 @@ const styles = StyleSheet.create({
     flex: 1,
     width: null,
     height: null,
-    resizeMode: 'contain',
-    marginBottom: 15
+    //resizeMode: 'contain',
+    marginBottom: 0
   },
   logoImageContainer: {
     backgroundColor: '#fff'
