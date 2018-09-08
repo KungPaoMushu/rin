@@ -1,17 +1,8 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Button, Text, Image, Alert } from 'react-native';
+import { ScrollView, StyleSheet, Button, Text, Image, Alert, View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 
-
-
-const counter = 0; 
-const cam = require('../assets/images/sunMoonStars.png'); 
-const other = require('../assets/images/icon.png')
-
-
-const text1 = 'text1'; 
-const text2 = 'text2'
-var pictureDisplay = false; 
+let displayedText = "text"
 export default class MemoriesScreen extends React.Component {
   static navigationOptions = {
     title: 'Memories',
@@ -26,49 +17,57 @@ onPressButton() {
 }
 
   render() {
-  	
-  	let imageSource = pictureDisplay ? other : cam; 
-  	let displayedText = pictureDisplay ? text1 : text2; 
+  
     return (
-      <ScrollView style={styles.container}>
-         
-         <Image style={styles.quoteImage} source= {imageSource} />
-         <Text> {displayedText} </Text>
-
-
-         <Button style = {styles.cheerUpButton}
+      
+      <ScrollView style={styles.container} contentContainerStyle = {styles.center}>
+     
+        <Image style= {styles.quoteImageContainer} source= {require('../assets/images/sunMoonStars.png')} />
+       
+         <View style = {styles.buttonContainer}>
+        <Button 
           onPress={() => {
-                Alert.alert('You tapped the button!', 'Text');
+                Alert.alert('You tapped the button!');
               }}
               title="Cheer Up"
               color="#fff"
         />
-         
+    </View>
+
+
+     <Text> {displayedText} </Text>
           
       </ScrollView>
     );
   }
 }
-onPressButton = () => {
-    Alert.alert(
-    'Alert Title',
-    'My Alert Message')
-  };
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 25,
+    paddingTop: 15, 
     backgroundColor: '#bc8abd',
-    paddingLeft: 15,
-    paddingRight: 15
 
-
+  
+  },
+  center: {
+    alignItems: 'center',
+    
   },
   quoteImage: {
-    flex: 1,
-    width: null,
+    flex: 1, 
+    height: null, 
+    width: null, 
+    marginLeft: 25,
+    marginRight: 25, 
+
     
-    resizeMode: 'contain'
-  }
+  },
+  buttonContainer: {
+    marginTop: 25,
+    backgroundColor: '#eeccff',
+    marginBottom: 50 
+  },
+  
 });
