@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
@@ -24,6 +25,9 @@ export default class HomeScreen extends React.Component {
       <View style={styles.container}>
           
         <Image style={styles.logoImage} source= {require('../assets/images/logo.png')} />
+
+        <Button title='Add an Item' onPress={() => this.props.navigation.navigate('AddItemScreen')}/>
+
         <Image style={styles.collageImage} source= {require('../assets/images/photoCollage.png')} />
 
 
