@@ -6,9 +6,13 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import RainyScreen from '../screens/RainyScreen';
 import MemoriesScreen from '../screens/MemoriesScreen'; 
+import AddItem from '../screens/AddItem'; 
+//import ListItem from '../screens/MemoriesScreen'; 
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
+  AddItemScreen: AddItem, 
+  //ListItemScreen: ListItem
 });
 
 HomeStack.navigationOptions = {
