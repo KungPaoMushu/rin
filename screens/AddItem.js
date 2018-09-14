@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableHighlight, StyleSheet, TextInput,AlertIOS } from 'react-native';
+import { db } from '../db';
+
+export const addItem =  (item) => {
+    db.ref('/items').push({
+        name: item
+    });
+}
 
 export default class AddItem extends Component {
   state = {
@@ -12,8 +19,13 @@ export default class AddItem extends Component {
     });
   }
   handleSubmit = () => {
-    console.log(this.state.name)
-  }
+      addItem(this.state.name);
+      AlertIOS.alert(
+        'Item saved successfully'
+       );
+    }
+
+
 
 
   render() {
