@@ -5,10 +5,6 @@ import HappyThoughtComponent from '../components/AppComponents/HappyThoughtCompo
 import { db } from '../db.js';
 import ItemComponent from '../components/ItemComponent';
 
-let thoughtsRef = db.ref('/thoughts');
-let databaseText = "Text from Database";
-
-
 
 //items
 let itemsRef = db.ref('/items');
@@ -24,6 +20,7 @@ export default class LinksScreen extends React.Component {
     }
 
     componentDidMount() {
+
         itemsRef.on('value', (snapshot) => {
             let data = snapshot.val();
             let items = Object.values(data);
@@ -42,12 +39,16 @@ export default class LinksScreen extends React.Component {
         <Button style = {styles.cheerUpButton}
           onPress={() => {
                 Alert.alert('You tapped the button!');
+                
+                
+
               }}
               title="Cheer Up"
               color="#fff"
         />
     </View>
 
+    
     <View style = {styles.cheerUpTextContainer}>
       
       <Text style = {styles.cheerUpText}>
@@ -56,7 +57,15 @@ export default class LinksScreen extends React.Component {
                     ? <ItemComponent items={this.state.items} />
                     : <Text>No items</Text>
                 }
-        {databaseText}
+
+      </Text> 
+
+      <Text>
+      
+
+      {this.state.items.length}
+      
+
       </Text> 
     </View>
     <View style={styles.container}>

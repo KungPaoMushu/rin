@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableHighlight, StyleSheet, TextInput,AlertIOS } from 'react-native';
+import { View, Text, TouchableHighlight, StyleSheet, TextInput,AlertIOS, Alert } from 'react-native';
 import { db } from '../db';
+import { ImagePicker, Permissions} from 'expo';
+import * as firebase from 'firebase'; 
 
 export const addItem =  (item) => {
     db.ref('/items').push({
@@ -25,7 +27,34 @@ export default class AddItem extends Component {
        );
     }
 
+  askPermissionsAsync = async () => {
+    await Permissions.askAsync(Permissions.CAMERA);
+    await Permissions.askAsync(Permissions.CAMERA_ROLL);
+  }
+  onChooseImagePress = async() => {
+    //let result = await ImagePicker.launchCameraAsync(); 
+    await this.askPermissionsAsync(); 
+    let result = await ImagePicker.launchImageLibraryAsync(); 
 
+    if (!result.cancelled) {
+      this.uploadImage(result.uri, "test-image")
+.then(() => {
+  Alert.alert("Succesfully Uploaded Image"); 
+})
+.catch((error) => {
+  Alert.alert(error); 
+});
+    }
+  }
+
+  uploadImage = async (uri, imageName) => {
+    const response = await fetch(uri); 
+    const blob = await response.blob(); 
+
+    var ref = firebase.storage().ref().child("images/" + imageName); 
+
+    return ref.put(blob); 
+  }
 
 
   render() {
@@ -46,7 +75,25 @@ export default class AddItem extends Component {
                   Add
               </Text>
             </TouchableHighlight>
+
+
+             <Text style={styles.title}>Add Image</Text>
+        <TextInput
+              style={styles.itemInput}
+              onChange={this.handleChange}
+            />
+        <TouchableHighlight
+                style = {styles.button}
+                underlayColor= "white"
+                onPress = {this.onChooseImagePress}
+              >
+              <Text
+                  style={styles.buttonText}>
+                  Choose Image
+              </Text>
+            </TouchableHighlight>
       </View>
+
     )
   }
 }
