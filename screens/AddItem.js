@@ -10,10 +10,15 @@ export const addItem =  (item) => {
     });
 }
 
+export const addURL =  (url) => {
+    db.ref('/url').push({
+        name: url
+    });
+}
+
 export default class AddItem extends Component {
   state = {
     name: '',
-    image: null
   }
 
   handleChange = (e) => {
@@ -28,6 +33,7 @@ export default class AddItem extends Component {
        );
     }
 
+
   askPermissionsAsync = async () => {
     await Permissions.askAsync(Permissions.CAMERA);
     await Permissions.askAsync(Permissions.CAMERA_ROLL);
@@ -36,11 +42,26 @@ export default class AddItem extends Component {
     //let result = await ImagePicker.launchCameraAsync(); 
     await this.askPermissionsAsync(); 
     let result = await ImagePicker.launchImageLibraryAsync(); 
-
+ var imageName = Math.round(+new Date()/1000);
     if (!result.cancelled) {
-      this.uploadImage(result.uri, Math.round(+new Date()/1000))
+     
+      this.uploadImage(result.uri, imageName)
+      
+   
+
 .then(() => {
   Alert.alert("Succesfully Uploaded Image"); 
+  addURL(imageName); 
+  
+  // db.ref('/url').push({
+  //       //adds '[object Object]' to database instead of url
+  //       name: firebase.storage().ref().child("images/" + imageName).getDownloadURL().toString()
+  //       // name: taskSnapshot.getDownloadUrl().toString()
+
+  //   });
+
+   
+  
 })
 .catch((error) => {
   Alert.alert(error); 
@@ -53,13 +74,22 @@ export default class AddItem extends Component {
     const blob = await response.blob(); 
 
     var ref = firebase.storage().ref().child("images/" + imageName); 
-
+ 
     return ref.put(blob); 
+  }
+
+  handleAddURL = (imageName) => {
+     
+  
+    this.setState({
+      name: imageName
+    });
+    
+    addURL(imageName);
   }
 
 
   render() {
-     let { image } = this.state;
 
     return (
        <View style={styles.main}>
