@@ -23,15 +23,17 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-          
-        <Image style={styles.logoImage} source= {require('../assets/images/logo.png')} />
 
-        <Button title='Add an Item' onPress={() => this.props.navigation.navigate('AddItemScreen')}/>
+      //heart logo
+       <Image style={styles.logoImage} source= {require('../assets/images/logo.png')} />
+      
+      //photo collage
+       <Image style={styles.collageImage} source= {require('../assets/images/photoCollage.png')} />
 
-        <Image style={styles.collageImage} source= {require('../assets/images/photoCollage.png')} />
-
-
-      </View>
+      //invisible add button
+      <TouchableOpacity style = {styles.invisibleContainer} onPress={()=>{this.props.navigation.navigate('AddItemScreen')}}/>
+            
+    </View>
 
     );
   }
@@ -71,6 +73,13 @@ const styles = StyleSheet.create({
     height: null, 
     resizeMode: 'contain',
     margin: 15
+  },
+  invisibleContainer:
+  {
+    width: 100, 
+    height: 100,
+    position: 'absolute',
+    //backgroundColor: '#fff'
   }
   
 });
