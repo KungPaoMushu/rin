@@ -12,7 +12,8 @@ export const addItem =  (item) => {
 
 export default class AddItem extends Component {
   state = {
-    name: ''
+    name: '',
+    image: null
   }
 
   handleChange = (e) => {
@@ -37,7 +38,7 @@ export default class AddItem extends Component {
     let result = await ImagePicker.launchImageLibraryAsync(); 
 
     if (!result.cancelled) {
-      this.uploadImage(result.uri, "test-image")
+      this.uploadImage(result.uri, Math.round(+new Date()/1000))
 .then(() => {
   Alert.alert("Succesfully Uploaded Image"); 
 })
@@ -58,6 +59,8 @@ export default class AddItem extends Component {
 
 
   render() {
+     let { image } = this.state;
+
     return (
        <View style={styles.main}>
         <Text style={styles.title}>Add Item</Text>
