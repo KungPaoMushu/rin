@@ -1,6 +1,10 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Button, Text, Image, Alert, View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
+import { db } from '../db.js';
+import MemoryComponent from '../components/MemoryComponent';
+
+let urlsRef = db.ref('/url');
 
 let displayedText = "text"
 export default class MemoriesScreen extends React.Component {
@@ -16,15 +20,27 @@ onPressButton() {
 	pictureDisplay: second; 
 }
 
+  state = {
+        urls: []
+    }
+
+    componentDidMount() {
+
+        urlsRef.on('value', (snapshot) => {
+            let data = snapshot.val();
+            let urls = Object.values(data);
+            this.setState({urls});
+         });
+    }
+
+
   render() {
   
     return (
       
       <ScrollView style={styles.container} contentContainerStyle = {styles.center}>
         
-        <View style = {styles.quoteImageContainer}>
         <Image source= {require('../assets/images/sunMoonStars.png')} />
-        </View>
 
          <View style = {styles.buttonContainer}>
         <Button 
@@ -34,10 +50,32 @@ onPressButton() {
               title="Cheer Up"
               color="#fff"
         />
-    </View>
+
+        </View>
 
 
      <Text> {displayedText} </Text>
+
+     <View style = {styles.cheerUpTextContainer}>
+      
+      <Text style = {styles.cheerUpText}>
+         {
+                    this.state.urls.length > 0
+                    ? <MemoryComponent urls={this.state.urls} />
+                    : <Text>No URLs</Text>
+                }
+
+      </Text> 
+
+      <Text>
+      
+
+      {this.state.urls.length}
+      
+
+      </Text> 
+    </View>
+
           
       </ScrollView>
     );
@@ -57,15 +95,12 @@ const styles = StyleSheet.create({
     
   },
   quoteImageContainer: {
-
-   width: null,
-   height: null,
-   
+   padding: 15, 
     
   },
   quoteImage:
   {
-    padding: 15
+    resizeMode: 'cover'
   },
   buttonContainer: {
     marginTop: 25,
