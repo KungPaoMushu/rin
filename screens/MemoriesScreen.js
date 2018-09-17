@@ -21,9 +21,11 @@ onPressButton() {
     return (
       
       <ScrollView style={styles.container} contentContainerStyle = {styles.center}>
-     
-        <Image style= {styles.quoteImageContainer} source= {require('../assets/images/sunMoonStars.png')} />
-       
+        
+        <View style = {styles.quoteImageContainer}>
+        <Image source= {require('../assets/images/sunMoonStars.png')} />
+        </View>
+
          <View style = {styles.buttonContainer}>
         <Button 
           onPress={() => {
@@ -46,7 +48,6 @@ onPressButton() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15, 
     backgroundColor: '#bc8abd',
 
   
@@ -55,19 +56,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     
   },
-  quoteImage: {
-    flex: 1, 
-    height: null, 
-    width: null, 
-    marginLeft: 25,
-    marginRight: 25, 
+  quoteImageContainer: {
 
+   width: null,
+   height: null,
+   
     
+  },
+  quoteImage:
+  {
+    padding: 15
   },
   buttonContainer: {
     marginTop: 25,
     backgroundColor: '#eeccff',
-    marginBottom: 50 
+    marginBottom: 50
   },
   
 });
