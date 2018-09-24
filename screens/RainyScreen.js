@@ -16,7 +16,8 @@ export default class LinksScreen extends React.Component {
   };
 
   state = {
-        items: []
+        items: [],
+        randomIndex: 0
     }
 
     componentDidMount() {
@@ -26,8 +27,12 @@ export default class LinksScreen extends React.Component {
             let items = Object.values(data);
             this.setState({items});
             console.log(items); 
+            randomIndex = Math.floor(Math.random()*this.state.items.length); 
+            this.setState({randomIndex});
          });
     }
+
+    
   render() {
     return (
       
@@ -55,7 +60,7 @@ export default class LinksScreen extends React.Component {
       <Text style = {styles.cheerUpText}>
          {
                     this.state.items.length > 0
-                    ? <ItemComponent item={this.state.items[0]} />
+                    ? <ItemComponent item={this.state.items[this.state.randomIndex]} />
                     : <Text>No items</Text>
                 }
 
