@@ -65,7 +65,7 @@ export default class LinksScreen extends React.Component {
            * content, we just wanted to provide you with some helpful links */}
       <Image source= {require('../assets/images/sadUnicornTransparent.png')} />
       <View style = {styles.cheerUpButtonContainer}>
-        <Button style = {styles.cheerUpButton}
+        <Button
           onPress={() => {
               
                 this.firstPress(); 
@@ -73,7 +73,7 @@ export default class LinksScreen extends React.Component {
                 
 
               }}
-              title="Cheer Up"
+              title="Press"
               color="#fff"
         />
     </View>
@@ -85,7 +85,7 @@ export default class LinksScreen extends React.Component {
          {
                     this.state.items.length > 0 && this.state.pressed == true
                     ? <ItemComponent item={this.state.items[this.state.randomIndex]} />
-                    : <Text>No items</Text>
+                    : <Text>You haven't pressed me :(</Text>
                 }
 
       </Text> 
@@ -114,6 +114,8 @@ const styles = StyleSheet.create({
   cheerUpButtonContainer: {
     marginTop: 25,
     backgroundColor: '#eeccff',
+    width: 100,
+    height: 40
     
   },
 
@@ -123,8 +125,8 @@ const styles = StyleSheet.create({
     margin: 15, 
     paddingTop: 15, 
     paddingBottom: 15, 
-    paddingLeft: 100,
-    paddingRight: 100
+    paddingLeft: 50,
+    paddingRight: 50
   }, 
 
   cheerUpText:
