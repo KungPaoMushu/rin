@@ -17,7 +17,9 @@ export default class LinksScreen extends React.Component {
 
   state = {
         items: [],
-        randomIndex: 0
+        randomIndex: 0, 
+        pressed: false
+        
     }
 
     componentDidMount() {
@@ -27,10 +29,31 @@ export default class LinksScreen extends React.Component {
             let items = Object.values(data);
             this.setState({items});
             console.log(items); 
-            randomIndex = Math.floor(Math.random()*this.state.items.length); 
-            this.setState({randomIndex});
+            this.setIndex(); 
+           
          });
     }
+
+  newIndex = () => {
+    randomIndex = Math.floor(Math.random()*this.state.items.length); 
+  }
+
+  firstPress = () => 
+  {
+    pressed = true;
+    this.setState({pressed});
+  }
+
+  setIndex = () => {
+    let prevIndex = this.state.randomIndex; 
+    //while loop causes "no items"
+    if (this.state.randomIndex == prevIndex)
+    {
+      this.newIndex(); 
+    }
+    prevIndex = this.state.randomIndex;
+    this.setState({randomIndex});
+  }
 
     
   render() {
@@ -44,8 +67,9 @@ export default class LinksScreen extends React.Component {
       <View style = {styles.cheerUpButtonContainer}>
         <Button style = {styles.cheerUpButton}
           onPress={() => {
-                Alert.alert('You tapped the button!');
-                
+              
+                this.firstPress(); 
+                this.setIndex();
                 
 
               }}
@@ -59,22 +83,13 @@ export default class LinksScreen extends React.Component {
       
       <Text style = {styles.cheerUpText}>
          {
-                    this.state.items.length > 0
+                    this.state.items.length > 0 && this.state.pressed == true
                     ? <ItemComponent item={this.state.items[this.state.randomIndex]} />
                     : <Text>No items</Text>
                 }
 
       </Text> 
 
-      <Text>
-      
-
-      {this.state.items.length}
-      {console.log(this.state.items)}
-       
-      
-
-      </Text> 
       }
     </View>
     <View style={styles.container}>
