@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Button, Text, Image, Alert, View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
-import { db } from '../db.js';
+import { db, storage } from '../db.js';
 import MemoryComponent from '../components/MemoryComponent';
 
 let urlsRef = db.ref('/url');

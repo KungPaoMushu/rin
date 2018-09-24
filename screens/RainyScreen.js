@@ -25,6 +25,7 @@ export default class LinksScreen extends React.Component {
             let data = snapshot.val();
             let items = Object.values(data);
             this.setState({items});
+            console.log(items); 
          });
     }
   render() {
@@ -54,7 +55,7 @@ export default class LinksScreen extends React.Component {
       <Text style = {styles.cheerUpText}>
          {
                     this.state.items.length > 0
-                    ? <ItemComponent items={this.state.items} />
+                    ? <ItemComponent item={this.state.items[0]} />
                     : <Text>No items</Text>
                 }
 
@@ -64,9 +65,12 @@ export default class LinksScreen extends React.Component {
       
 
       {this.state.items.length}
+      {console.log(this.state.items)}
+       
       
 
       </Text> 
+      }
     </View>
     <View style={styles.container}>
                

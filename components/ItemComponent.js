@@ -20,20 +20,27 @@ const styles = StyleSheet.create({
 export default class ItemComponent extends Component {
 
   static propTypes = {
-      items: PropTypes.array.isRequired
+      item: PropTypes.any,
   };
 
   render() {
     return (
       <View style={styles.itemsList}>
-        {this.props.items.map((item, index) => {
-            return (
-                <View key={index}>
-                    <Text style={styles.itemtext}>{item.name}</Text>
-                </View>
-            )
-        })}
+      
+        <Text style={styles.itemtext}>
+        {this.props.item.name}
+        </Text>
+
+
       </View>
     );
   }
 }
+
+  // {this.props.items.map((item, index) => {
+        //     return (
+        //         <View key={index}>
+        //             <Text style={styles.itemtext}>{item.name}</Text>
+        //         </View>
+        //     )
+
