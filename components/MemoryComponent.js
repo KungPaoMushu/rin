@@ -1,65 +1,38 @@
 // MemoryComponent.js
 
 import React, { Component } from 'react';
-import {  View, Text, StyleSheet, Image} from 'react-native';
+import {  View, Text, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import { db, storage } from '../db.js';
 
 const styles = StyleSheet.create({
-    urlsList: {
+    itemsList: {
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-around',
     },
-    urlstext: {
+    itemtext: {
         fontSize: 24,
         fontWeight: 'bold',
         textAlign: 'center',
     }
 });
 
-export default class MemoryComponent extends Component {
+export default class ItemComponent extends Component {
 
   static propTypes = {
-      urls: PropTypes.array.isRequired
+      fileName: PropTypes.any,
   };
-
-  state = {
-        url: 'hellp'
-    }
-
-//   componentDidMount() {
-
-//        getImageURL('1537052967');
-//     }
-
-// getImageURL(imageName) {
-//   storage.ref('images').child(imageName).getDownloadURL().then(url => {
-//             console.log(url);
-//             this.setState({url});
-//         })
-    
-// }
 
   render() {
     return (
-      <View style={styles.urlsList}>
-        {this.props.urls.map((urls, index) => {
-            return (
-                <View key={index}>
-                   
-                    <Text style={styles.urlstext}>{urls.name}</Text>
-                    
+      <View style={styles.itemsList}>
+      
+        <Text style={styles.itemtext}>
+        {this.props.fileName.name}
+        </Text>
 
 
-                     <Image source= {require('../assets/images/sadUnicornTransparent.png')} />
-
-                   <Text> {this.state.url} </Text> 
-
-                    
-                </View>
-            )
-        })}
       </View>
     );
   }
