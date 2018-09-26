@@ -10,15 +10,18 @@ export const addItem =  (item) => {
     });
 }
 
-export const addURL =  (url) => {
+export const addURL =  (name, url) => {
     db.ref('/url').push({
-        name: url
+        filename: name,
+        downloadURL: url 
+        
     });
 }
 
 export default class AddItem extends Component {
   state = {
     name: '',
+    url: 'fakeURL'
   }
 
   handleChange = (e) => {
@@ -51,7 +54,7 @@ export default class AddItem extends Component {
 
 .then(() => {
   Alert.alert("Succesfully Uploaded Image"); 
-  addURL(imageName); 
+  addURL(imageName, this.state.url); 
   
   // db.ref('/url').push({
   //       //adds '[object Object]' to database instead of url
@@ -59,8 +62,6 @@ export default class AddItem extends Component {
   //       // name: taskSnapshot.getDownloadUrl().toString()
 
   //   });
-
-   
   
 })
 .catch((error) => {
@@ -77,17 +78,6 @@ export default class AddItem extends Component {
  
     return ref.put(blob); 
   }
-
-  handleAddURL = (imageName) => {
-     
-  
-    this.setState({
-      name: imageName
-    });
-    
-    addURL(imageName);
-  }
-
 
   render() {
 
