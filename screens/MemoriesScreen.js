@@ -6,7 +6,6 @@ import MemoryComponent from '../components/MemoryComponent';
 
 let urlsRef = db.ref('/url');
 
-let displayedText = "text"
 export default class MemoriesScreen extends React.Component {
   static navigationOptions = {
     title: 'Memories',
@@ -21,7 +20,9 @@ onPressButton() {
 }
 
   state = {
-        urls: []
+        urls: [],
+        randomIndex: 0, 
+        pressed: false
     }
 
     componentDidMount() {
@@ -30,9 +31,30 @@ onPressButton() {
             let data = snapshot.val();
             let urls = Object.values(data);
             this.setState({urls});
+            this.setIndex(); 
          });
     }
 
+  newIndex = () => {
+    randomIndex = Math.floor(Math.random()*this.state.urls.length); 
+  }
+
+  firstPress = () => 
+  {
+    pressed = true;
+    this.setState({pressed});
+  }
+
+  setIndex = () => {
+    let prevIndex = this.state.randomIndex; 
+    //while loop causes "no items"
+    if (this.state.randomIndex == prevIndex)
+    {
+      this.newIndex(); 
+    }
+    prevIndex = this.state.randomIndex;
+    this.setState({randomIndex});
+  }
 
   render() {
   
@@ -45,7 +67,8 @@ onPressButton() {
          <View style = {styles.buttonContainer}>
         <Button 
           onPress={() => {
-                Alert.alert('You tapped the button!');
+                this.firstPress(); 
+                this.setIndex(); 
               }}
               title="Cheer Up"
               color="#fff"
@@ -54,14 +77,13 @@ onPressButton() {
         </View>
 
 
-     <Text> {displayedText} </Text>
 
      <View style = {styles.cheerUpTextContainer}>
       
       <Text style = {styles.cheerUpText}>
          {
-                    this.state.urls.length > 0
-                    ? <MemoryComponent urls={this.state.urls} />
+                    this.state.urls.length > 0 && this.state.pressed == true
+                    ? <MemoryComponent fileName={this.state.urls[this.state.randomIndex]} />
                     : <Text>No URLs</Text>
                 }
 
