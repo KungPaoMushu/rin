@@ -1,7 +1,7 @@
 // MemoryComponent.js
 
 import React, { Component } from 'react';
-import {  View, Text, StyleSheet} from 'react-native';
+import {  View, Text, StyleSheet, Image} from 'react-native';
 import PropTypes from 'prop-types';
 import { db, storage } from '../db.js';
 
@@ -12,9 +12,13 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
     },
     itemtext: {
-        fontSize: 24,
+        fontSize: 10,
         fontWeight: 'bold',
         textAlign: 'center',
+    }, 
+    image: {
+      height: 100,
+      width: 100
     }
 });
 
@@ -27,13 +31,18 @@ export default class ItemComponent extends Component {
   render() {
     return (
       <View style={styles.itemsList}>
-      
+        
         <Text style={styles.itemtext}>
-        {this.props.fileName.downloadURL}
-        </Text>
 
+        {this.props.fileName.filename}
+        {this.props.fileName.downloadURL}
+
+        </Text>
+        <Image style ={styles.image} source= {{uri: this.props.fileName.downloadURL}} />
+         <Image source= {require('../assets/images/sunMoonStars.png')} />
 
       </View>
     );
   }
 }
+
