@@ -16,10 +16,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
     }, 
-    image: {
-      height: 100,
-      width: 100
-    }
+ 
 });
 
 export default class ItemComponent extends Component {
@@ -39,7 +36,7 @@ export default class ItemComponent extends Component {
 
         </Text>
         <Image style ={styles.image} source= {{uri: this.props.fileName.downloadURL}} />
-         <Image source= {require('../assets/images/sunMoonStars.png')} />
+    
 
       </View>
     );

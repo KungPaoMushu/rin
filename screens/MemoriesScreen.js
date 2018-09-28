@@ -62,7 +62,7 @@ onPressButton() {
       
       <ScrollView style={styles.container} contentContainerStyle = {styles.center}>
         
-        <Image source= {require('../assets/images/sunMoonStars.png')} />
+        <Image style= {styles.quoteImage} source= {require('../assets/images/sunMoonStars.png')} />
 
          <View style = {styles.buttonContainer}>
         <Button 
@@ -122,7 +122,8 @@ const styles = StyleSheet.create({
   },
   quoteImage:
   {
-    resizeMode: 'cover'
+    width: 350, 
+    height: 300
   },
   buttonContainer: {
     marginTop: 25,
