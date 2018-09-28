@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Button, Text, Image, Alert, View } from 'react-native';
+import { ScrollView, StyleSheet, Button, Text, Image, Alert, View, TouchableOpacity } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import { db, storage } from '../db.js';
 import MemoryComponent from '../components/MemoryComponent';
@@ -61,44 +61,25 @@ onPressButton() {
     return (
       
       <ScrollView style={styles.container} contentContainerStyle = {styles.center}>
-        
-        <Image style= {styles.quoteImage} source= {require('../assets/images/sunMoonStars.png')} />
 
-         <View style = {styles.buttonContainer}>
-        <Button 
-          onPress={() => {
+        <TouchableOpacity onPress={() => {
                 this.firstPress(); 
                 this.setIndex(); 
-              }}
-              title="Cheer Up"
-              color="#fff"
-        />
+              }}>
+          <Image
+            style={styles.quoteImage}
+            source= {require('../assets/images/sunMoonStars.png')}
+          />
+        </TouchableOpacity>
 
-        </View>
-
-
-
-     <View style = {styles.cheerUpTextContainer}>
-      
-      <Text style = {styles.cheerUpText}>
+       <Text>
          {
-                    this.state.urls.length > 0 && this.state.pressed == true
-                    ? <MemoryComponent fileName={this.state.urls[this.state.randomIndex]} />
-                    : <Text>No URLs</Text>
-                }
-
+          this.state.urls.length > 0 && this.state.pressed == true
+          ? <MemoryComponent fileName={this.state.urls[this.state.randomIndex]} />
+            : <Text>(Tap on the star)</Text>
+          }
       </Text> 
 
-      <Text>
-      
-
-      {this.state.urls.length}
-      
-
-      </Text> 
-    </View>
-
-          
       </ScrollView>
     );
   }

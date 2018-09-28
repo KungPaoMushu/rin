@@ -16,7 +16,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
     }, 
- 
+    image: {
+     height: 320,
+     width: 300
+    }
 });
 
 export default class ItemComponent extends Component {
@@ -28,13 +31,7 @@ export default class ItemComponent extends Component {
   render() {
     return (
       <View style={styles.itemsList}>
-        
-        <Text style={styles.itemtext}>
-
-        {this.props.fileName.filename}
-        {this.props.fileName.downloadURL}
-
-        </Text>
+      
         <Image style ={styles.image} source= {{uri: this.props.fileName.downloadURL}} />
     
 
