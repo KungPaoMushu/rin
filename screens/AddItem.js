@@ -21,7 +21,7 @@ export const addURL =  (name, url) => {
 export default class AddItem extends Component {
   state = {
     name: '',
-    url: 'fakeURL'
+    url: 'fakeURLSet '
   }
 
   handleChange = (e) => {
@@ -45,28 +45,27 @@ export default class AddItem extends Component {
     //let result = await ImagePicker.launchCameraAsync(); 
     await this.askPermissionsAsync(); 
     let result = await ImagePicker.launchImageLibraryAsync(); 
- var imageName = Math.round(+new Date()/1000);
+    var imageName = Math.round(+new Date()/1000);
     if (!result.cancelled) {
      
       this.uploadImage(result.uri, imageName)
-      
-   
-
-.then(() => {
-  Alert.alert("Succesfully Uploaded Image"); 
-  addURL(imageName, this.state.url); 
   
-  // db.ref('/url').push({
-  //       //adds '[object Object]' to database instead of url
-  //       name: firebase.storage().ref().child("images/" + imageName).getDownloadURL().toString()
-  //       // name: taskSnapshot.getDownloadUrl().toString()
+      .then(() => {
+        Alert.alert("Succesfully Uploaded Image"); 
+        //setDownloadURL(imageName); 
+        addURL(imageName, this.state.url); 
+        
+        // db.ref('/url').push({
+        //       //adds '[object Object]' to database instead of url
+        //       name: firebase.storage().ref().child("images/" + imageName).getDownloadURL().toString()
+        //       // name: taskSnapshot.getDownloadUrl().toString()
 
-  //   });
-  
-})
-.catch((error) => {
-  Alert.alert(error); 
-});
+        //   });
+        
+      })
+      .catch((error) => {
+        Alert.alert(error); 
+      });
     }
   }
 
@@ -77,6 +76,21 @@ export default class AddItem extends Component {
     var ref = firebase.storage().ref().child("images/" + imageName); 
  
     return ref.put(blob); 
+  }
+
+  setDownloadURL(imageName)
+  {
+
+    var ref = firebase.storage().child("images/" + imageName);
+  
+    // Get the download URL
+    ref.getDownloadURL().then(function(dlURL) {
+      url = dlURL; 
+      this.setState({url}); 
+    }).catch((error) => {
+  Alert.alert(error); 
+     
+    });
   }
 
   render() {
