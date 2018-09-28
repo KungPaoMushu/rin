@@ -74,23 +74,20 @@ export default class AddItem extends Component {
     const blob = await response.blob(); 
 
     var ref = firebase.storage().ref().child("images/" + imageName); 
- 
+    
     return ref.put(blob); 
   }
 
   setDownloadURL(imageName)
   {
 
-    var ref = firebase.storage().child("images/" + imageName);
+    var ref = firebase.storage().child("images/" + imageName + ".jpg");
   
-    // Get the download URL
-    ref.getDownloadURL().then(function(dlURL) {
-      url = dlURL; 
-      this.setState({url}); 
-    }).catch((error) => {
-  Alert.alert(error); 
-     
-    });
+    url = ref.getDownloadURL();
+    this.setState({url});
+    // console.log("url " + url);
+    // console.log("this.state.url " + this.state.url);
+
   }
 
   render() {

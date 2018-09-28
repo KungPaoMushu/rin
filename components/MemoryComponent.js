@@ -29,7 +29,7 @@ export default class ItemComponent extends Component {
       <View style={styles.itemsList}>
       
         <Text style={styles.itemtext}>
-        {this.props.fileName.name}
+        {this.props.fileName.downloadURL}
         </Text>
 
 
