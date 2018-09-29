@@ -60,10 +60,10 @@ export default class LinksScreen extends React.Component {
     return (
       
 
-      <ScrollView style={styles.container} contentContainerStyle = {styles.center}>
+      <View style={styles.container} contentContainerStyle = {styles.center}>
         {/* Go ahead and delete ExpoLinksView and replace it with your
            * content, we just wanted to provide you with some helpful links */}
-      <Image source= {require('../assets/images/sadUnicornTransparent.png')} />
+      <Image style= {styles.unicornImage} source= {require('../assets/images/sadUnicornTransparent.png')} />
       <View style = {styles.cheerUpButtonContainer}>
         <Button
           onPress={() => {
@@ -96,7 +96,7 @@ export default class LinksScreen extends React.Component {
                
             </View>
 
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 15,
     backgroundColor: '#bc8abd',
+    alignItems: 'center'
   },
   center: {
     alignItems: 'center',
@@ -121,12 +122,11 @@ const styles = StyleSheet.create({
 
   cheerUpTextContainer:
   {
-    //backgroundColor: '#eeccff',
-    margin: 15, 
-    paddingTop: 15, 
-    paddingBottom: 15, 
-    paddingLeft: 50,
-    paddingRight: 50
+  //backgroundColor: '#eeccff',
+  padding: 15, 
+  width: 320,
+  height: 200,
+  alignItems: 'center'
   }, 
 
   cheerUpText:
@@ -137,6 +137,10 @@ const styles = StyleSheet.create({
   {
     backgroundColor: '#fff',
     flex: 1
-
+  },
+  unicornImage:
+  {
+    height: 300,
+    width: 300
   }
 });

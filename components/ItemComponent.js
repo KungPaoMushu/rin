@@ -7,11 +7,11 @@ import PropTypes from 'prop-types';
 const styles = StyleSheet.create({
     itemsList: {
         flex: 1,
-        flexDirection: 'column',
+        
         justifyContent: 'space-around',
     },
     itemtext: {
-        fontSize: 24,
+        fontSize: 16,
         fontWeight: 'bold',
         textAlign: 'center',
     }
