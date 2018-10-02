@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   quoteImage:
   {
     width: 350, 
-    height: 300
+    height: 250
   },
   buttonContainer: {
     marginTop: 25,

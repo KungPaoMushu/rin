@@ -17,8 +17,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     }, 
     image: {
-     height: 320,
-     width: 300
+      marginTop: 10,
+     height: 370,
+     width: 320, 
+     borderRadius: 40, 
+
     }
 });
 
