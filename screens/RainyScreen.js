@@ -28,7 +28,6 @@ export default class LinksScreen extends React.Component {
             let data = snapshot.val();
             let items = Object.values(data);
             this.setState({items});
-            console.log(items); 
             this.setIndex(); 
            
          });
@@ -140,7 +139,7 @@ const styles = StyleSheet.create({
   },
   unicornImage:
   {
-    height: 300,
-    width: 300
+    height: 350,
+    width: 350
   }
 });

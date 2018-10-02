@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     },
     itemtext: {
         fontSize: 16,
-        fontWeight: 'bold',
+        // fontWeight: 'bold',
         textAlign: 'center',
     }
 });
