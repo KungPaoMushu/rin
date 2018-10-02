@@ -48,11 +48,12 @@ export default class AddItem extends Component {
     var imageName = Math.round(+new Date()/1000);
     if (!result.cancelled) {
      
-      this.uploadImage(result.uri, imageName)
-  
+      var uploadUrl = await this.uploadImage(result.uri, imageName)
+
       .then(() => {
         Alert.alert("Succesfully Uploaded Image"); 
-        //setDownloadURL(imageName); 
+        url = uploadUrl; 
+        this.setState({url});
         addURL(imageName, this.state.url); 
         
         // db.ref('/url').push({
@@ -75,7 +76,9 @@ export default class AddItem extends Component {
 
     var ref = firebase.storage().ref().child("images/" + imageName); 
     
-    return ref.put(blob); 
+    const snapshot = await ref.put(blob); 
+    url = snapshot.ref.getDownloadURL();
+    return snapshot.ref.getDownloadURL(); 
   }
 
   setDownloadURL(imageName)
