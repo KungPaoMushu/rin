@@ -38,3 +38,10 @@ The Memories Screen is for displaying a random image. Tapping on the star select
 
 ![alt text](https://github.com/KungPaoMushu/rin/blob/master/screenshots/Screen%20Shot%202018-10-02%20at%2012.55.20%20PM.png)
 
+
+
+**Upcoming:**
+- Button press count
+- Weighted random index
+
+
