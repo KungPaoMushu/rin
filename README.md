@@ -22,7 +22,26 @@ This screen is accessed by touching a small portion of the display and is used t
 )
 
 
-Rainy Screen for text notes is currently set up and displaying a random entry from the database, but I have yet to take screenshots as I am still using fake data.
 
-Memories Screen for photo notes is also currently set up and is able to display a random image from the database based on the Firebase Storage downlaod url, but I am also using dummy photos right now. 
+
+[**Rainy Screen:**](https://github.com/KungPaoMushu/rin/blob/master/screenshots/Screen%20Shot%202018-10-02%20at%201.17.00%20PM.png
+)
+Rainy Screen is for displaying random text notes. When the button is pressed, a random entry from the items database is selected and an ItemComponent displaying the text is shown.  
+
+![alt text](https://github.com/KungPaoMushu/rin/blob/master/screenshots/Screen%20Shot%202018-10-02%20at%201.17.00%20PM.png)
+
+
+
+
+[**Memories Screen:**](https://github.com/KungPaoMushu/rin/blob/master/screenshots/Screen%20Shot%202018-10-02%20at%2012.55.20%20PM.png)
+The Memories Screen is for displaying a random image. Tapping on the star selects a random index from the image url database and renders a MemoryComponent that displays the image. 
+
+![alt text](https://github.com/KungPaoMushu/rin/blob/master/screenshots/Screen%20Shot%202018-10-02%20at%2012.55.20%20PM.png)
+
+
+
+**Upcoming:**
+- Button press count
+- Weighted random index
+
 
