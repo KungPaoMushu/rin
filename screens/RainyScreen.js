@@ -45,7 +45,7 @@ export default class LinksScreen extends React.Component {
 
   setIndex = () => {
     let prevIndex = this.state.randomIndex; 
-    //while loop causes "no items"
+    
     if (this.state.randomIndex == prevIndex)
     {
       this.newIndex(); 
@@ -58,44 +58,34 @@ export default class LinksScreen extends React.Component {
   render() {
     return (
       
-
       <View style={styles.container} contentContainerStyle = {styles.center}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-      <Image style= {styles.unicornImage} source= {require('../assets/images/sadUnicornTransparent.png')} />
-      <View style = {styles.cheerUpButtonContainer}>
-        <Button
-          onPress={() => {
-              
-                this.firstPress(); 
-                this.setIndex();
+        <Image style= {styles.unicornImage} source= {require('../assets/images/sadUnicornTransparent.png')} />
+        <View style = {styles.cheerUpButtonContainer}>
+          <Button
+            onPress={() => {
                 
+                  this.firstPress(); 
+                  this.setIndex();
 
-              }}
-              title="Press"
-              color="#fff"
-        />
-    </View>
+                }}
+                title="Press"
+                color="#fff"
+          />
+        </View>
 
-    
-    <View style = {styles.cheerUpTextContainer}>
+         <View style = {styles.cheerUpTextContainer}>
       
-      <Text style = {styles.cheerUpText}>
-         {
-                    this.state.items.length > 0 && this.state.pressed == true
-                    ? <ItemComponent item={this.state.items[this.state.randomIndex]} />
-                    : <Text>You haven't pressed me :(</Text>
-                }
-
-      </Text> 
-
-      }
-    </View>
-    <View style={styles.container}>
-               
-            </View>
+           <Text style = {styles.cheerUpText}>
+            {
+              this.state.items.length > 0 && this.state.pressed == true
+              ? <ItemComponent item={this.state.items[this.state.randomIndex]} />
+              : <Text> {"You haven't pressed me :( "}</Text>
+            }
+           </Text> 
+         </View>
 
       </View>
+
     );
   }
 }
