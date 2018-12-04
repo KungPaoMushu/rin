@@ -37,10 +37,3 @@ export default class ItemComponent extends Component {
   }
 }
 
-  // {this.props.items.map((item, index) => {
-        //     return (
-        //         <View key={index}>
-        //             <Text style={styles.itemtext}>{item.name}</Text>
-        //         </View>
-        //     )
-
